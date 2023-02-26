@@ -1,5 +1,5 @@
 const colors = {
-    "Purple": "rgb(158, 42, 155)",
+    "purple": "rgb(158, 42, 155)",
     "white": "rgb(255, 255, 255)",
     "lightPurple": "rgb(255, 215, 245)",
     "darkYellow": "#daa520",
