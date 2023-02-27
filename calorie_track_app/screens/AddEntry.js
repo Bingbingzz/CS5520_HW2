@@ -5,7 +5,7 @@ import colors from "../constant/colors";
 import BackGroundGradient from "../components/BackGroundGradient";
 import AddEntryForm from "../components/AddEntryForm";
 
-const AddEntry = () => {
+const AddEntry = ({navigation}) => {
   return (
     <View>
       {/* <LinearGradient
@@ -13,7 +13,7 @@ const AddEntry = () => {
         style={styles.container}
       > */}
       <BackGroundGradient />
-      <AddEntryForm/>
+      <AddEntryForm navigation/>
       {/* </LinearGradient> */}
     </View>
   );

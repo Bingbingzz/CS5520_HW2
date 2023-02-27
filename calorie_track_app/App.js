@@ -39,7 +39,7 @@ function EntryBottomTabs() {
       })}
     >
       <ButtomTabs.Screen
-        name="AllEntries"
+        name="allEntries"
         component={AllEntries}
         options={{
           title: "All Entries",
@@ -49,7 +49,7 @@ function EntryBottomTabs() {
         }}
       />
       <ButtomTabs.Screen
-        name="Over-limit Entries"
+        name="overLimitEntries"
         component={OverLimitEntries}
         options={{
           title: "Over-limit Entries",

@@ -5,6 +5,9 @@ import Input from "./Input";
 import colors from "../constant/colors";
 import { useState } from "react";
 import PressableButton from "./PressableButton";
+import { writeToDB } from "../firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+import AllEntries from "../screens/AllEntries";
 
 const AddEntryForm = ({ navigation }) => {
   const [caloriesText, setCaloriesText] = useState("");
@@ -14,16 +17,18 @@ const AddEntryForm = ({ navigation }) => {
   function changeCalories(enteredCalories) {
     setCaloriesText(enteredCalories);
     if (!isValid) {
-        setIsValid(true);
-      }
+      setIsValid(true);
+    }
+
+    
     // setCalories(enteredCalories);
     // console.log(caloriesText);
   }
   function changeDescription(enteredDscription) {
     setDescriptionText(enteredDscription);
     if (!isValid) {
-        setIsValid(true);
-      }
+      setIsValid(true);
+    }
     // setDescription(enteredDscription);
     // console.log(descriptionText);
   }
@@ -41,10 +46,18 @@ const AddEntryForm = ({ navigation }) => {
   const handleSubmit = async () => {
     console.log(isValid);
     if (!caloriesText || !descriptionText || isNaN(caloriesText)) {
-        Alert.alert('Invalid Input', 'Please check your input.', [{ text: 'OK' }]);
-        return;
+      Alert.alert("Invalid Input", "Please check your input.", [
+        { text: "OK" },
+      ]);
+      return;
+    }
+    try {
+        writeToDB({ calories: caloriesText, description: descriptionText });
+      } catch (error) {
+        console.log("error message");
       }
-  }
+    //   navigation.goBack();
+  };
 
   return (
     <View style={styles.formContainer}>
@@ -52,9 +65,6 @@ const AddEntryForm = ({ navigation }) => {
         <Lable>Calories</Lable>
         <Input sendChangedText={changeCalories} text={caloriesText}></Input>
       </View>
-      {!isValid && (!caloriesText || isNaN(caloriesText)) && (
-        <Text style={styles.errorMessage}>Please enter a valid number</Text>
-      )}
       <View style={styles.entryContainer}>
         <Lable>Description</Lable>
         <Input
@@ -63,9 +73,6 @@ const AddEntryForm = ({ navigation }) => {
           text={descriptionText}
         ></Input>
       </View>
-      {!isValid && !descriptionText && (
-        <Text style={styles.errorMessage}>Please enter a description</Text>
-      )}
       <View style={styles.buttonContainer}>
         <PressableButton
           buttonPressed={handleReset}
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
   },
   error: {
     color: "red",
-    fontSize:13,
+    fontSize: 13,
   },
 });
 

@@ -13,7 +13,7 @@ const Input = ({sendChangedText,text}) => {
         <TextInput style={styles.input}
           multiline
           maxLength={200}
-          numberOfLines={4}
+        //   numberOfLines={4}
           value={text}
           placeholder=""
           onChangeText={changeText}
