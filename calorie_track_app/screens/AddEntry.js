@@ -13,7 +13,7 @@ const AddEntry = ({navigation}) => {
         style={styles.container}
       > */}
       <BackGroundGradient />
-      <AddEntryForm navigation/>
+      <AddEntryForm/>
       {/* </LinearGradient> */}
     </View>
   );

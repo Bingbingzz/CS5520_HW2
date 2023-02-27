@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Alert } from "react-native";
+import { firestore } from "../firebase/firebase_setup";
 import React from "react";
 import Lable from "./Lable";
 import Input from "./Input";
@@ -8,8 +9,10 @@ import PressableButton from "./PressableButton";
 import { writeToDB } from "../firebase/firestore";
 import { collection, addDoc } from "firebase/firestore";
 import AllEntries from "../screens/AllEntries";
+import { useNavigation } from '@react-navigation/native';
 
-const AddEntryForm = ({ navigation }) => {
+const AddEntryForm = () => {
+  const navigation = useNavigation();
   const [caloriesText, setCaloriesText] = useState("");
   const [descriptionText, setDescriptionText] = useState("");
   const [isValid, setIsValid] = useState(true);
@@ -56,14 +59,14 @@ const AddEntryForm = ({ navigation }) => {
       } catch (error) {
         console.log("error message");
       }
-    //   navigation.goBack();
+      navigation.goBack();
   };
 
   return (
     <View style={styles.formContainer}>
       <View style={styles.entryContainer}>
         <Lable>Calories</Lable>
-        <Input sendChangedText={changeCalories} text={caloriesText}></Input>
+        <Input style={styles.calories} sendChangedText={changeCalories} text={caloriesText}></Input>
       </View>
       <View style={styles.entryContainer}>
         <Lable>Description</Lable>
@@ -95,14 +98,17 @@ const styles = StyleSheet.create({
   formContainer: {
     marginTop: 80,
   },
+
   entryContainer: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    padding:10,
+    marginHorizontal:30,
   },
 
-  description: {
-    minHeight: 200,
+  calories: {
+    height: 200,
   }, //why this not work
 
   buttonContainer: {

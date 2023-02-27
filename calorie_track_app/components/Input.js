@@ -11,7 +11,7 @@ const Input = ({sendChangedText,text}) => {
   return (   
     <View style={styles.container}>
         <TextInput style={styles.input}
-          multiline
+          multiline={true}
           maxLength={200}
         //   numberOfLines={4}
           value={text}
@@ -37,6 +37,7 @@ const styles=StyleSheet.create({
         borderBottomColor: colors.purple,
         borderRadius: 10,
         width: 200,
+        // height: 200,
       }
 })
 
