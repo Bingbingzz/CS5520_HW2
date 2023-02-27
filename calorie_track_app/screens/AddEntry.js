@@ -3,6 +3,7 @@ import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import colors from "../constant/colors";
 import BackGroundGradient from "../components/BackGroundGradient";
+import AddEntryForm from "../components/AddEntryForm";
 
 const AddEntry = () => {
   return (
@@ -12,7 +13,7 @@ const AddEntry = () => {
         style={styles.container}
       > */}
       <BackGroundGradient />
-      <Text>AddEntry</Text>
+      <AddEntryForm/>
       {/* </LinearGradient> */}
     </View>
   );
