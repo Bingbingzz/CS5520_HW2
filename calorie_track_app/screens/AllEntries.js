@@ -14,9 +14,12 @@ import Input from "../components/Input";
 import EntryItem from "../components/EntryItem";
 import BackGroundGradient from "../components/BackGroundGradient";
 import { firestore } from "../firebase/firebase_setup";
+import EditEntry from "./EditEntry";
+import { useNavigation } from '@react-navigation/native';
 
-const AllEntries = ({navigation}) => {
+const AllEntries = ({entry, navigation, itemPressed}) => {
     const [entries, setEntries] = useState([]);
+    // const navigation = useNavigation();
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
@@ -38,6 +41,10 @@ const AllEntries = ({navigation}) => {
           unsubscribe();   
       },[]);
 
+      const handlePress = (entry) => {
+        navigation.navigate('EditEntry', { entry });
+      };
+
     return (
     <View style={styles.description}>
       <BackGroundGradient />
@@ -50,7 +57,7 @@ const AllEntries = ({navigation}) => {
                 entry={item}
                 navigation={navigation}
                 // onDelete={onDeletePressed}
-                // onEntryPress={EntryPressed}
+                itemPressed={() => handlePress(item)}
                 />
                 );
                 // console.log(item);

@@ -4,9 +4,10 @@ import PressableButton from "./PressableButton";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "../constant/colors";
 
-const EntryItem = ({entry, navigation}) => {
+const EntryItem = ({entry, navigation, itemPressed}) => {
   // const limit=500
   // const isOverLimit = (entry.calories > limit) && !entry.isReviewed;
+
 
   return (
     <View style={styles.itemContainer}>
@@ -15,7 +16,7 @@ const EntryItem = ({entry, navigation}) => {
           // general style first, customized style after
           return [styles.itemContainer, pressed && styles.pressedStyle];
         }}
-        // onPress={() => itemPressed(entry)}
+        onPress={() => itemPressed(entry)}
         android_ripple={{ color: "white", borderless: false }}
       >
         <View style={styles.description}>

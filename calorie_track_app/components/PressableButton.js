@@ -25,7 +25,7 @@ const PressableButton = ({
 };
 const styles = StyleSheet.create({
   pressableDefault: { backgroundColor: colors.purple, borderRadius:5 },
-  pressedStyle: {backgroundColor: colors.lightPurple, opacity: 0.5, borderRadius:5},
+  pressedStyle: {backgroundColor: colors.lightPurple, opacity: 0.6, borderRadius:5},
 });
 
 export default PressableButton;
