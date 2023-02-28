@@ -7,14 +7,9 @@ import AddEntryForm from "../components/AddEntryForm";
 
 const AddEntry = ({navigation}) => {
   return (
-    <View>
-      {/* <LinearGradient
-        colors={[colors.lightPurple, "transparent"]}
-        style={styles.container}
-      > */}
+    <View>      
       <BackGroundGradient />
       <AddEntryForm/>
-      {/* </LinearGradient> */}
     </View>
   );
 };

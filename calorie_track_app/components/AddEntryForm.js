@@ -22,18 +22,12 @@ const AddEntryForm = () => {
     if (!isValid) {
       setIsValid(true);
     }
-
-    
-    // setCalories(enteredCalories);
-    // console.log(caloriesText);
   }
   function changeDescription(enteredDscription) {
     setDescriptionText(enteredDscription);
     if (!isValid) {
       setIsValid(true);
     }
-    // setDescription(enteredDscription);
-    // console.log(descriptionText);
   }
 
   function handleReset() {

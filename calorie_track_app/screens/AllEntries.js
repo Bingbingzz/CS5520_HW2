@@ -56,7 +56,6 @@ const AllEntries = ({entry, navigation, itemPressed}) => {
               <EntryItem
                 entry={item}
                 navigation={navigation}
-                // onDelete={onDeletePressed}
                 itemPressed={() => handlePress(item)}
                 />
                 );

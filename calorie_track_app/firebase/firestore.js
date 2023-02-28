@@ -22,7 +22,7 @@ export async function deleteFromDB(entryId) {
 
 export async function updateInDB(entryId, updatedEntry) {
     try {
-        const entryRef = doc(firestore, 'calories', entry);
+        const entryRef = doc(firestore, 'calories', entryId);
         await updateDoc(entryRef, updatedEntry);
         console.log('updated');
     } catch (err) {

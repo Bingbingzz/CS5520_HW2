@@ -4,10 +4,9 @@ import PressableButton from "./PressableButton";
 import { Ionicons } from "@expo/vector-icons";
 import colors from "../constant/colors";
 
-const EntryItem = ({entry, navigation, itemPressed}) => {
-  // const limit=500
-  // const isOverLimit = (entry.calories > limit) && !entry.isReviewed;
-
+const EntryItem = ({ entry, navigation, itemPressed }) => {
+  const limit = 500;
+  const isOverLimit = !entry.isReviewed && entry.calories > limit;
 
   return (
     <View style={styles.itemContainer}>
@@ -17,13 +16,11 @@ const EntryItem = ({entry, navigation, itemPressed}) => {
           return [styles.itemContainer, pressed && styles.pressedStyle];
         }}
         onPress={() => itemPressed(entry)}
-        android_ripple={{ color: "white", borderless: false }}
+        android_ripple={{ color: colors.white, borderless: false }}
       >
         <View style={styles.description}>
           <Text style={[styles.descriptionText]}>{entry.description}</Text>
-          {/* {isOverLimit && (
-            <AntDesign name="warning" size={15} color="black" />
-            )} */}
+          {isOverLimit && <Ionicons name="warning" size={25} color={colors.lightYellow}/>}
         </View>
         <Text style={[styles.calories]}>{entry.calories}</Text>
         {/* {console.log(entry.calories)} */}
@@ -33,7 +30,6 @@ const EntryItem = ({entry, navigation, itemPressed}) => {
 };
 
 const styles = StyleSheet.create({
-  
   calories: {
     flex: 1,
     textAlign: "center",
