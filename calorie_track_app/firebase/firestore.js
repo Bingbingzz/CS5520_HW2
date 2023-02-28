@@ -20,10 +20,10 @@ export async function deleteFromDB(entryId) {
     }
 }
 
-export async function updateInDB(entryId, updatedEntry) {
+export async function updateInDB(entryId, updateEntry) {
     try {
         const entryRef = doc(firestore, 'calories', entryId);
-        await updateDoc(entryRef, updatedEntry);
+        await setDoc(entryRef, updateEntry,  { merge: true });
         console.log('updated');
     } catch (err) {
         console.log(err);

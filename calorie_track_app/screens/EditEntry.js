@@ -6,7 +6,7 @@ import { collection, getFirestore } from "firebase/firestore";
 import colors from "../constant/colors";
 import PressableButton from "../components/PressableButton";
 import { deleteFromDB, updateInDB } from "../firebase/firestore";
-import { Feather,Ionicons } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 
@@ -32,23 +32,23 @@ const EditEntry = ({ route }) => {
       },
     ]);
   };
-  const handleReview=()=>{
+  const handleReview = () => {
     Alert.alert("Imporant", "Are you sure you want to mark this as reviewd?", [
-        {
-          text: "No",
-          onPress: () => console.log("Mark canceled"),
-          style: "cancel",
+      {
+        text: "No",
+        onPress: () => console.log("Mark canceled"),
+        style: "cancel",
+      },
+      {
+        text: "OK",
+        onPress: async () => {
+          updateInDB(route.params.entry.id, { isReviewed: true });
+          console.log(route.params.entry.id);
+          navigation.goBack();
         },
-        {
-          text: "OK",
-          onPress: async () => {
-            updateInDB(route.params.entry.id, { isReviewed: true });
-            navigation.goBack();
-          },
-        },
-      ]);
-
-  }
+      },
+    ]);
+  };
   return (
     <View style={styles.container}>
       <BackGroundGradient />
@@ -71,10 +71,11 @@ const EditEntry = ({ route }) => {
           </PressableButton>
           {isOverLimit && (
             <PressableButton
-                customizedStyle={styles.button}
-                buttonPressed={handleReview}
+              buttonPressed={handleReview}
+              customizedStyle={styles.button}
+              
             >
-                <Feather name="check" size={20} color={colors.white} />
+              <Feather name="check" size={20} color={colors.white} />
             </PressableButton>
           )}
         </View>

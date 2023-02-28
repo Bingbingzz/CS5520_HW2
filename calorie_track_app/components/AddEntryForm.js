@@ -17,6 +17,7 @@ const AddEntryForm = () => {
   const [descriptionText, setDescriptionText] = useState("");
   const [isValid, setIsValid] = useState(true);
 
+
   function changeCalories(enteredCalories) {
     setCaloriesText(enteredCalories);
     if (!isValid) {
@@ -49,7 +50,7 @@ const AddEntryForm = () => {
       return;
     }
     try {
-        writeToDB({ calories: caloriesText, description: descriptionText });
+        writeToDB({ calories: caloriesText, description: descriptionText});
       } catch (error) {
         console.log("error message");
       }
